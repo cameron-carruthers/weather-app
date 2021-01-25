@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
+const Container = styled.div`
+  width: 20rem;
+  text-align: center;
+`
+
 const Login = () => (
-  <>
+  <Container>
     <h1>Welcome</h1>
     <h2>Tell us about yourself</h2>
     <form>
@@ -15,7 +20,7 @@ const Login = () => (
       </label>
       <button>Continue</button>
     </form>
-  </>
+  </Container>
 );
 
 export default Login;
