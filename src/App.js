@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { createGlobalStyle } from 'styled-components';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import axios from 'axios';
 import LogIn from './LogIn';
 import Forecast from './Forecast';
+import { apiKey } from './key';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -30,11 +31,24 @@ const Container = styled.div`
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
+
+  const handleLogin = (e, city, name) => {
+    e.preventDefault();
+    axios.get(`api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
+      .then((data) => {
+        console.log('data', data);
+        setUsername(name);
+        setLoggedIn(true);
+      }).catch((err) => {
+        console.error(err);
+      })
+  }
  
   return (
     <Container>
       <GlobalStyle />
-      {loggedIn ? <Forecast /> : <LogIn />}
+      {loggedIn ? <Forecast /> : <LogIn handleLogin={handleLogin}/>}
     </Container>
   )
 }

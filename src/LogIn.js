@@ -79,7 +79,7 @@ const Button = styled.button`
   }
 `
 
-const LogIn = ({ getWeatherInfo }) => {
+const LogIn = ({ handleLogin }) => {
 
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
@@ -88,7 +88,11 @@ const LogIn = ({ getWeatherInfo }) => {
     <Container>
       <Heading>Welcome</Heading>
       <Subheading>Tell us about yourself</Subheading>
-      <Form onSubmit={getWeatherInfo}>
+      <Form onSubmit={e => {
+        handleLogin(e, city, name);
+        setName('');
+        setCity('');
+      }}>
         <Label>
           Your name
           <Input type="text" value={name} onChange={e => setName(e.target.value)}/>
