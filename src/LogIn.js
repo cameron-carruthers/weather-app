@@ -70,6 +70,7 @@ const Button = styled.button`
   &:hover {
     background-color: #3f21db;
     transform: translateY(-2px);
+    cursor: pointer;
   }
 
   &:disabled {
