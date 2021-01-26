@@ -4,6 +4,8 @@ import axios from 'axios';
 import LogIn from './LogIn';
 import Forecast from './Forecast';
 import { apiKey } from './key';
+import Loading from './Loading';
+import Error from './Error';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -32,23 +34,37 @@ const Container = styled.div`
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleLogin = (e, city, name) => {
     e.preventDefault();
+    setLoading(true);
     axios.get(`api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
       .then((data) => {
         console.log('data', data);
         setUsername(name);
         setLoggedIn(true);
+        setLoading(false);
       }).catch((err) => {
         console.error(err);
+        setError(true);
+        setLoading(false);
       })
+  }
+
+  if (error) {
+    return <Error />
+  }
+  
+  if (loading) {
+    return <Loading />
   }
  
   return (
     <Container>
       <GlobalStyle />
-      {loggedIn ? <Forecast /> : <LogIn handleLogin={handleLogin}/>}
+      {loggedIn ? <Forecast username={username}/> : <LogIn handleLogin={handleLogin}/>}
     </Container>
   )
 }

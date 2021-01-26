@@ -77,6 +77,14 @@ const Button = styled.button`
     cursor: not-allowed;
     opacity: 35%;
   }
+
+  &:focus {
+    outline: 2px solid #3f21db;
+  }
+
+  &:active {
+    outline: 2px solid #3f21db;
+  }
 `
 
 const LogIn = ({ handleLogin }) => {
