@@ -1,5 +1,23 @@
+import Loader from 'react-loader-spinner'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`
+
 const Loading = () => (
-  <div>Loading...</div>
+  <Container>
+    <Loader
+         type="Circles"
+         color="#5F2EEA"
+         height={150}
+         width={150}
+      />
+  </Container>
 );
 
 export default Loading;

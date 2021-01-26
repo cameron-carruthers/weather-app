@@ -54,7 +54,12 @@ const App = () => {
   }
 
   if (error) {
-    return <Error />
+    return (
+      <div>
+        <GlobalStyle />
+        <Error />
+      </div>
+    )
   }
   
   if (loading) {
