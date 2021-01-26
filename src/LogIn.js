@@ -15,7 +15,7 @@ const Heading = styled.h1`
 const Subheading = styled.h2`
   color: #4E4B66;
   font-size: 1.875rem;
-  font-weight: 500;
+  font-weight: 400;
   margin-top: 0;
   margin-bottom: 4.25rem;
 `
