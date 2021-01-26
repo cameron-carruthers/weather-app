@@ -64,24 +64,39 @@ const Button = styled.button`
   font-weight: 600;
   border: none;
   border-radius: 5px;
+  transition: background-color 0.2s linear, transform 0.2s linear;
+
+  &:hover {
+    background-color: #3f21db;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    transform: none;
+    cursor: not-allowed;
+    opacity: 35%;
+  }
 `
 
-const Login = () => (
-  <Container>
-    <Heading>Welcome</Heading>
-    <Subheading>Tell us about yourself</Subheading>
-    <Form>
-      <Label>
-        Your name
-        <Input type="text" name="name" />
-      </Label>
-      <Label>
-        Location
-        <Input type="text" name="name" />
-      </Label>
-      <Button>Continue</Button>
-    </Form>
-  </Container>
-);
+const Login = () => {
+
+  return (
+    <Container>
+      <Heading>Welcome</Heading>
+      <Subheading>Tell us about yourself</Subheading>
+      <Form>
+        <Label>
+          Your name
+          <Input type="text" name="name" />
+        </Label>
+        <Label>
+          Location
+          <Input type="text" name="name" />
+        </Label>
+        {name && city ? <Button>Continue</Button> : <Button disabled>Continue</Button>}
+      </Form>
+    </Container>
+  )
+};
 
 export default Login;
