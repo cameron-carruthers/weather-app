@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -78,20 +79,23 @@ const Button = styled.button`
   }
 `
 
-const Login = () => {
+const LogIn = ({ getWeatherInfo }) => {
+
+  const [name, setName] = useState('');
+  const [city, setCity] = useState('');
 
   return (
     <Container>
       <Heading>Welcome</Heading>
       <Subheading>Tell us about yourself</Subheading>
-      <Form>
+      <Form onSubmit={getWeatherInfo}>
         <Label>
           Your name
-          <Input type="text" name="name" />
+          <Input type="text" value={name} onChange={e => setName(e.target.value)}/>
         </Label>
         <Label>
-          Location
-          <Input type="text" name="name" />
+          City
+          <Input type="text" value={city} onChange={e => setCity(e.target.value)}/>
         </Label>
         {name && city ? <Button>Continue</Button> : <Button disabled>Continue</Button>}
       </Form>
@@ -99,4 +103,4 @@ const Login = () => {
   )
 };
 
-export default Login;
+export default LogIn;
