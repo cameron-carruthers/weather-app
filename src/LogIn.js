@@ -29,6 +29,14 @@ const Input = styled.input`
   font-weight: 500;
   padding: 1rem;
   color: #14142B;
+
+  &:focus {
+    outline: 2px solid #5F2EEA;
+  }
+
+  &:active {
+    outline: 2px solid #5F2EEA;
+  }
 `
 
 const Label = styled.label`
