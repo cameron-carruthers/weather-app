@@ -18,5 +18,4 @@ Executing the code below will install dependencies and start the development ser
 ```
 npm install
 npm start
-
 ```
