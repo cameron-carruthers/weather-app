@@ -11,7 +11,10 @@ const Heading = styled.h1`
   font-weight: 700;
   margin: 0;
   color: ${darkNeutral};
-  font-size: 2rem;
+
+  @media (max-width: 600) {
+    font-size: 2rem;
+  }
 `
 
 const Subheading = styled.h2`
@@ -21,6 +24,10 @@ const Subheading = styled.h2`
   margin-top: 0;
   margin-bottom: 4.25rem;
   font-size: 1.5rem;
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 `
 
 const Input = styled.input`
