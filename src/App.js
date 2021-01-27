@@ -45,6 +45,8 @@ const App = () => {
     if (savedName && savedCity) {
       console.log('It worked!')
       handleLogin(null, savedCity, savedName);
+    } else {
+      setLoading(false);
     }
   }, [])
 
