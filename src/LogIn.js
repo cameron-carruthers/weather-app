@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { primaryColor } from './utils';
 
 const Container = styled.div`
   width: 25rem;
@@ -59,7 +60,7 @@ const Form = styled.form`
 const Button = styled.button`
   height: 4rem;
   width: 14.75rem;
-  background-color: #5F2EEA;
+  background-color: ${primaryColor};
   color: white;
   font-size: 1rem;
   font-weight: 600;

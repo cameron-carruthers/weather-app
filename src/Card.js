@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { gradients } from './utils';
 
 const Container = styled.div`
   width: 12rem;
@@ -14,7 +15,7 @@ const Gradient = styled.div`
   width: 100%;
   height: 6.875rem;
   position: relative;
-  background: linear-gradient(114.44deg, #EB0055 0%, #F98820 100%);
+  background: linear-gradient(${props => gradients[props.color]});
   border-radius: 5px 5px 0 0;
 `
 
@@ -50,7 +51,7 @@ const DateContainer = styled.div`
 
 const Card = ({ temp, day, date, bg }) => (
   <Container>
-    <Gradient>
+    <Gradient color={bg}>
       <Temp>{temp}°</Temp>
     </Gradient>
     <DateContainer>
