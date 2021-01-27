@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import axios from 'axios';
+import { DateTime } from 'luxon';
 import LogIn from './LogIn';
 import Forecast from './Forecast';
 import { apiKey } from './key';
@@ -39,6 +40,8 @@ const App = () => {
   const [error, setError] = useState(false);
   const [temps, setTemps] = useState([]);
 
+  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+
   const handleLogin = async (e, city, name) => {
 
     e.preventDefault();
@@ -51,11 +54,20 @@ const App = () => {
 
       const result = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data[0].lat}&lon=${res.data[0].lon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`);
 
-      const arrayOfTemps = result.data.daily.map((element) => (
-        element.temp.day
-      ));
+      console.log('result', result);
 
-      setTemps(arrayOfTemps);
+      const arrayOfTemps = result.data.daily.map((element) => {
+
+        const ISO = new Date(element.dt * 1000).toISOString();
+
+        return ({
+          temp: Math.floor(element.temp.day),
+          day: DateTime.fromISO(ISO).toFormat('cccc'),
+          date: DateTime.fromISO(ISO).toFormat('DDD')
+        })
+      });
+
+      setTemps(arrayOfTemps.slice(0, 5));
       setLoggedIn(true);
       setLoading(false);
     } catch (err) {
@@ -81,7 +93,7 @@ const App = () => {
   return (
     <Container>
       <GlobalStyle />
-      {loggedIn && name && city && temps ? <Forecast 
+      {loggedIn ? <Forecast 
         name={name}
         city={city}
         temps={temps}

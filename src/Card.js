@@ -48,14 +48,14 @@ const DateContainer = styled.div`
   padding: 1rem;
 `
 
-const Card = () => (
+const Card = ({ temp, day, date, bg }) => (
   <Container>
     <Gradient>
-      <Temp>34°</Temp>
+      <Temp>{temp}°</Temp>
     </Gradient>
     <DateContainer>
-      <Weekday>Monday</Weekday>
-      <Date>January 11th, 2021</Date>
+      <Weekday>{day}</Weekday>
+      <Date>{date}</Date>
     </DateContainer>
   </Container>
 );

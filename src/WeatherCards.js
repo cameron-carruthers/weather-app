@@ -15,13 +15,11 @@ const Container = styled.div`
   }
 `
 
-const WeatherCards = () => (
+const WeatherCards = ({ temps }) => (
   <Container>
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    {temps.map((element, i) => (
+      <Card temp={element.temp} day={element.day} date={element.date} bg={i} key={i} />
+    ))}
   </Container>
 );
 
