@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import axios from 'axios';
 import LogIn from './LogIn';
@@ -34,15 +34,30 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [temps, setTemps] = useState([]);
 
+  useEffect(() => {
+    const savedName = localStorage.getItem('name');
+    const savedCity = localStorage.getItem('city');
+
+    if (savedName && savedCity) {
+      console.log('It worked!')
+      handleLogin(null, savedCity, savedName);
+    }
+  }, [])
+
   const handleLogin = async (e, city, name) => {
 
-    e.preventDefault();
+    e && e.preventDefault();
+
     setName(name);
+    localStorage.setItem('name', name);
+
     setCity(city);
+    localStorage.setItem('city', city);
+
     setLoading(true);
 
     try {
