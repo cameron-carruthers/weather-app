@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { primaryColor } from './utils';
+import { primaryColor, darkNeutral, lightNeutral } from './utils';
 
 const Container = styled.div`
   width: 25rem;
@@ -10,15 +10,17 @@ const Heading = styled.h1`
   font-size: 3.125rem;
   font-weight: 700;
   margin: 0;
-  color: #14142B;
+  color: ${darkNeutral};
+  font-size: 2rem;
 `
 
 const Subheading = styled.h2`
-  color: #4E4B66;
+  color: ${lightNeutral};
   font-size: 1.875rem;
   font-weight: 400;
   margin-top: 0;
   margin-bottom: 4.25rem;
+  font-size: 1.5rem;
 `
 
 const Input = styled.input`
@@ -33,11 +35,11 @@ const Input = styled.input`
   color: #14142B;
 
   &:focus {
-    outline: 2px solid #5F2EEA;
+    outline: 2px solid ${primaryColor};
   }
 
   &:active {
-    outline: 2px solid #5F2EEA;
+    outline: 2px solid ${primaryColor};
   }
 `
 
@@ -81,11 +83,11 @@ const Button = styled.button`
   }
 
   &:focus {
-    outline: 2px solid #3f21db;
+    outline: 2px solid ${primaryColor};
   }
 
   &:active {
-    outline: 2px solid #3f21db;
+    outline: 2px solid ${primaryColor};
   }
 `
 

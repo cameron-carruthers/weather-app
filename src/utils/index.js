@@ -7,3 +7,5 @@ export const gradients = [
 ];
 
 export const primaryColor = '#5F2EEA';
+export const darkNeutral = '#14142B';
+export const lightNeutral = '#4E4B66';

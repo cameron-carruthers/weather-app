@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import WeatherCards from './WeatherCards';
+import { darkNeutral, lightNeutral } from './utils';
 
 const Container = styled.div`
   display: flex;
@@ -21,6 +22,7 @@ const InnerContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 60%;
   }
 `
 
@@ -28,16 +30,18 @@ const Heading = styled.h1`
   font-size: 3.125rem;
   font-weight: 700;
   margin: 0;
-  color: #14142B;
+  color: ${darkNeutral};
 
   @media (max-width: 600px) {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
   }
 `
 
 const Subheading = styled.h2`
-  color: #4E4B66;
+  color: ${lightNeutral};
   font-size: 1.875rem;
   font-weight: 400;
   margin-top: 0;
@@ -46,6 +50,7 @@ const Subheading = styled.h2`
   @media (max-width: 600px) {
     margin-bottom: 2rem;
     text-align: center;
+    font-size: 1.5rem;
   }
 `
 

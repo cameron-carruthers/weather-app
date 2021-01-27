@@ -40,8 +40,6 @@ const App = () => {
   const [error, setError] = useState(false);
   const [temps, setTemps] = useState([]);
 
-  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
   const handleLogin = async (e, city, name) => {
 
     e.preventDefault();
