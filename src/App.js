@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import axios from 'axios';
-import { DateTime } from 'luxon';
 import LogIn from './LogIn';
 import Forecast from './Forecast';
-import { apiKey } from './key';
 import Loading from './Loading';
 import Error from './Error';
 
@@ -48,24 +46,8 @@ const App = () => {
     setLoading(true);
 
     try {
-      const res = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`);
-
-      const result = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${res.data[0].lat}&lon=${res.data[0].lon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`);
-
-      console.log('result', result);
-
-      const arrayOfTemps = result.data.daily.map((element) => {
-
-        const ISO = new Date(element.dt * 1000).toISOString();
-
-        return ({
-          temp: Math.floor(element.temp.day),
-          day: DateTime.fromISO(ISO).toFormat('cccc'),
-          date: DateTime.fromISO(ISO).toFormat('DDD')
-        })
-      });
-
-      setTemps(arrayOfTemps.slice(0, 5));
+      const temps = await axios.get(`http://localhost:5000?city=${city}`);
+      setTemps(temps.data);
       setLoggedIn(true);
       setLoading(false);
     } catch (err) {
