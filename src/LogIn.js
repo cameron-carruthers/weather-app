@@ -119,11 +119,11 @@ const LogIn = ({ handleLogin }) => {
         setCity('');
       }}>
         <FloatContainer>
-          <Label for="name">Your name</Label>
+          <Label htmlFor="name">Your name</Label>
           <Input id="name" type="text" value={name} onChange={e => setName(e.target.value)}/>
         </FloatContainer>
         <FloatContainer>
-          <Label for="city">City</Label>
+          <Label htmlFor="city">City</Label>
           <Input id="city" type="text" value={city} onChange={e => setCity(e.target.value)}/>
         </FloatContainer>
         {name && city ? <Button>Continue</Button> : <Button disabled>Continue</Button>}

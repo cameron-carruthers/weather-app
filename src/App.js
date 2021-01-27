@@ -43,7 +43,6 @@ const App = () => {
     const savedCity = localStorage.getItem('city');
 
     if (savedName && savedCity) {
-      console.log('It worked!')
       handleLogin(null, savedCity, savedName);
     } else {
       setLoading(false);
