@@ -53,14 +53,20 @@ const Emphasis = styled.span`
   font-weight: 500;
 `
 
-const Forecast = () => (
-  <Container>
-    <InnerContainer>
-      <Heading>Hi, Andreas</Heading>
-      <Subheading>Weather forecast: <Emphasis>New York</Emphasis> for the next 5 days  </Subheading>
-      <WeatherCards />
-    </InnerContainer>
-  </Container>
-);
+const Forecast = ({ name, city, temps }) => {
+
+  console.log('name', name);
+  console.log('city', city);
+
+  return (
+    <Container>
+      <InnerContainer>
+        <Heading>Hi, {name}</Heading>
+        <Subheading>Weather forecast: <Emphasis>{city}</Emphasis> for the next 5 days  </Subheading>
+        <WeatherCards />
+      </InnerContainer>
+    </Container>
+  )
+};
 
 export default Forecast;
